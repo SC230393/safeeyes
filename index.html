@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Safe Eyes — Quality Culture Excellence</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 1.5rem 1rem 3rem;
+  }
+  .page { max-width: 680px; margin: 0 auto; }
+  .fhdr {
+    background: #0a4f3c;
+    border-radius: 16px;
+    padding: 1.75rem 1.75rem 1.4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .fhdr::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .htop { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 0.8rem; }
+  .hico {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: rgba(255,255,255,0.13);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hico svg { width: 26px; height: 26px; stroke: #a8f0d0; fill: none; stroke-width: 1.8; }
+  .bqce {
+    display: inline-block;
+    background: rgba(255,255,255,0.13);
+    color: #c6f6e0;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; margin-bottom: 5px;
+  }
+  .ftm { font-size: 22px; font-weight: 600; color: #fff; line-height: 1.2; }
+  .fts { font-size: 12px; color: rgba(255,255,255,0.68); margin-top: 4px; line-height: 1.5; }
+  .htags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 0.65rem; }
+  .htag {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); font-weight: 400;
+  }
+  .htag.r { background: rgba(220,80,60,0.28); color: #ffc2b8; }
+  .htag.a { background: rgba(240,160,40,0.22); color: #ffe0a0; }
+  .htag.b { background: rgba(100,200,255,0.16); color: #b8e8ff; }
+  .setup-banner {
+    background: #fff8e6;
+    border: 1px solid #f0c040;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5a4000;
+  }
+  .setup-banner strong { color: #3a2800; }
+  .setup-banner code {
+    background: #fff0c0; border-radius: 4px;
+    padding: 1px 6px; font-size: 12px; font-family: monospace; color: #3a2800;
+  }
+  .setup-banner ol { margin: 0.5rem 0 0.5rem 1.25rem; }
+  .setup-banner li { margin-bottom: 4px; }
+  .sc {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .slbl {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #888; display: flex; align-items: center; gap: 6px;
+    margin-bottom: 1rem;
+  }
+  .slbl svg { width: 15px; height: 15px; stroke: #888; fill: none; stroke-width: 2; }
+  .ts-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: #f6fdf9; border: 1px solid #b8e8d0;
+    border-radius: 8px; padding: 9px 14px;
+    font-size: 13px; color: #555;
+  }
+  .ts-ico { color: #0d6e52; font-size: 18px; }
+  .ts-val { font-weight: 600; color: #0a4f3c; font-size: 13px; }
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .g2 { grid-template-columns: 1fr; } }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fl {
+    font-size: 12px; font-weight: 600; color: #555;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .fl .r { color: #e24b4a; }
+  input[type=text], input[type=tel], select, textarea {
+    width: 100%; font-family: inherit; font-size: 14px;
+    color: #1a1a1a; background: #fafafa;
+    border: 1px solid #ddd; border-radius: 8px;
+    padding: 9px 11px; transition: border-color 0.15s, box-shadow 0.15s; outline: none;
+    appearance: none; -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #0d6e52;
+    box-shadow: 0 0 0 3px rgba(13,110,82,0.1);
+    background: #fff;
+  }
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+  .zvw { display: none; }
+  .zvw.vis { display: block; }
+  .cg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1rem; }
+  @media (max-width: 420px) { .cg { grid-template-columns: 1fr; } }
+  .cb {
+    border: 1.5px solid #ddd; border-radius: 10px; padding: 13px 8px;
+    cursor: pointer; text-align: center; background: #fafafa;
+    transition: all 0.15s; display: flex; flex-direction: column; align-items: center; gap: 7px;
+    font-family: inherit;
+  }
+  .cb svg { width: 24px; height: 24px; stroke: #aaa; fill: none; stroke-width: 1.8; }
+  .cb span { font-size: 12px; font-weight: 600; color: #777; line-height: 1.3; }
+  .cb:hover { border-color: #0d6e52; background: rgba(13,110,82,0.04); }
+  .cb.active { border-color: #0d6e52; border-width: 2px; background: rgba(13,110,82,0.07); }
+  .cb.active svg { stroke: #0d6e52; }
+  .cb.active span { color: #0a4f3c; }
+  .sw { display: none; }
+  .sw.vis { display: block; }
+  .sclbl { font-size: 12px; color: #888; margin-bottom: 8px; font-weight: 600; }
+  .scp { display: flex; flex-wrap: wrap; gap: 7px; }
+  .sp {
+    font-size: 12px; padding: 5px 13px; border-radius: 20px;
+    border: 1px solid #ddd; background: #fafafa; color: #666;
+    cursor: pointer; transition: all 0.12s; font-family: inherit;
+  }
+  .sp:hover { border-color: #0d6e52; color: #0a4f3c; }
+  .sp.active { background: #0d6e52; color: #fff; border-color: #0d6e52; font-weight: 600; }
+  .sbtn {
+    width: 100%; padding: 14px; background: #0a4f3c;
+    color: white; border: none; border-radius: 10px;
+    font-size: 15px; font-weight: 600; font-family: inherit;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px;
+    margin-top: 1rem; transition: background 0.15s;
+  }
+  .sbtn:hover { background: #0d6e52; }
+  .sbtn:disabled { background: #aaa; cursor: not-allowed; }
+  .sbtn svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
+  .spinner {
+    width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3);
+    border-top-color: #fff; border-radius: 50%;
+    animation: spin 0.7s linear infinite; display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .msg {
+    display: none; padding: 10px 14px; border-radius: 8px;
+    font-size: 13px; margin-top: 10px; font-weight: 500;
+  }
+  .msg.err { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+  .msg.ok  { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+  .sst { display: none; text-align: center; padding: 2.5rem 1rem; }
+  .sst.vis { display: block; }
+  .sico {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: #EAF3DE; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+  }
+  .sico svg { width: 34px; height: 34px; stroke: #3B6D11; fill: none; stroke-width: 2; }
+  .stit { font-size: 19px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+  .ssub { font-size: 13px; color: #666; line-height: 1.6; max-width: 400px; margin: 0 auto; }
+  .rbdg {
+    display: inline-block; margin-top: 0.9rem; padding: 6px 18px;
+    background: #f0f2f5; border: 1px solid #ddd;
+    border-radius: 20px; font-size: 13px; color: #555; font-weight: 600;
+  }
+  .nob {
+    margin-top: 1.5rem; padding: 10px 26px;
+    background: #fff; border: 1px solid #ccc;
+    border-radius: 8px; font-size: 14px; color: #1a1a1a;
+    cursor: pointer; font-family: inherit; font-weight: 500; transition: background 0.12s;
+  }
+  .nob:hover { background: #f5f5f5; }
+  .cfg-wrap {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .cfg-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #888;
+    display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem;
+  }
+  .cfg-input-row { display: flex; gap: 8px; align-items: flex-start; }
+  .cfg-input-row input { flex: 1; font-size: 12px; padding: 8px 10px; }
+  .cfg-save-btn {
+    padding: 8px 16px; background: #0a4f3c; color: #fff;
+    border: none; border-radius: 8px; font-size: 13px; font-weight: 600;
+    font-family: inherit; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .cfg-save-btn:hover { background: #0d6e52; }
+  .cfg-hint { font-size: 11px; color: #999; margin-top: 5px; line-height: 1.5; }
+  .cfg-status { font-size: 12px; margin-top: 6px; font-weight: 500; }
+  .cfg-status.ok { color: #166534; }
+  .cfg-status.err { color: #991b1b; }
+  .footer { text-align: center; font-size: 11px; color: #bbb; margin-top: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="fhdr">
+    <div class="htop">
+      <div class="hico">
+        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div>
+        <div class="bqce">Quality Culture Excellence</div>
+        <div class="ftm">Safe Eyes</div>
+        <div class="fts">Unsafe Act / Unsafe Condition · Near Miss Reporting<br>Food Safety · Product Quality · GMP</div>
+      </div>
+    </div>
+    <div class="htags">
+      <span class="htag r">&#9888; Unsafe Act</span>
+      <span class="htag a">&#9881; Unsafe Condition</span>
+      <span class="htag b">&#9733; Near Miss</span>
+      <span class="htag">Scan QR · Fill · Submit</span>
+    </div>
+  </div>
+  <div class="cfg-wrap" id="cfgPanel">
+    <div class="cfg-label">
+      <svg viewBox="0 0 24 24" width="15" height="15" stroke="#888" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 0-14.14 0M4.93 19.07a10 10 0 0 0 14.14 0"/></svg>
+      Power Automate connection
+    </div>
+    <div class="cfg-input-row">
+      <input type="text" id="paUrl" placeholder="Paste your Power Automate HTTP trigger URL here…" />
+      <button class="cfg-save-btn" onclick="saveUrl()">Save</button>
+    </div>
+    <div class="cfg-hint">Follow the setup steps below to get this URL. Once saved, all submissions flow directly into your Excel file on SharePoint / OneDrive.</div>
+    <div class="cfg-status" id="cfgStatus"></div>
+  </div>
+  <div class="setup-banner" id="setupBanner">
+    <strong>One-time setup — connect to Microsoft Excel (5 minutes)</strong>
+    <ol>
+      <li>Go to <strong>flow.microsoft.com</strong> → Create → <strong>Instant cloud flow</strong></li>
+      <li>Choose trigger: <strong>"When an HTTP request is received"</strong> → Create</li>
+      <li>Set <strong>Method = POST</strong>. Copy the <strong>HTTP POST URL</strong> and paste above.</li>
+      <li>Add step: <strong>Excel Online (Business)</strong> → <strong>"Add a row into a table"</strong></li>
+      <li>Create <code>SafeEyes_Log.xlsx</code> on OneDrive with a Table with headers:<br/>
+        <code>Reference | Date | Time | Name | Phone | Department | Process Area | Area | Zone | Category | Sub-categories | Observation</code>
+      </li>
+      <li>Map each column to the matching HTTP body field. Save and turn on the flow.</li>
+    </ol>
+  </div>
+  <div id="mainForm">
+    <div class="sc">
+      <div class="slbl">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Submission timestamp
+      </div>
+      <div class="ts-bar">
+        <span class="ts-ico">&#128197;</span>
+        <span style="font-size:13px;color:#777;">Auto-recorded on submit —</span>
+        <span class="ts-val" id="liveClock"></span>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="slbl">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Observer details
+      </div>
+      <div class="g2">
+        <div class="fg">
+          <label class="fl">Full name <span class="r">*</span></label>
+          <input type="text" id="obs_name" placeholder="Your full name" />
+        </div>
+        <div class="fg">
+          <label class="fl">Phone number <span class="r">*</span></label>
+          <input type="tel" id="obs_phone" placeholder="e.g. 9876543210" />
+        </div>
+        <div class="fg">
+          <label class="fl">Department <span class="r">*</span></label>
+          <select id="obs_dept">
+            <option value="">Select department</option>
+            <option>Production</option>
+            <option>Quality Assurance</option>
+            <option>Warehouse &amp; Dispatch</option>
+            <option>Maintenance</option>
+            <option>Utilities</option>
+            <option>Administration</option>
+            <option>IT</option>
+            <option>HR &amp; Training</option>
+            <option>Procurement</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Process area</label>
+          <input type="text" id="obs_process" placeholder="e.g. Dough Mixing, Packing Line" />
+        </div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="slbl">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Area &amp; Zone
+      </div>
+      <div class="g2">
+        <div class="fg">
+          <label class="fl">Area <span class="r">*</span></label>
+          <select id="area_select" onchange="updateZones()">
+            <option value="">Select area</option>
+            <option value="Dough">Dough</option>
+            <option value="CLC">CLC</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Dunkin_RTE">Dunkin RTE</option>
+            <option value="BMC">BMC</option>
+            <option value="Dunkin_3Sink">Dunkin 3 Sink Area</option>
+            <option value="Sec_Packing">Secondary Packing / BMC Blast</option>
+            <option value="Old_CK">Old CK / New CK / Popeyes</option>
+            <option value="QA_Lab">QA Lab</option>
+            <option value="Admin_Block">Admin Block</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Warehouse">Warehouse &amp; Dispatch</option>
+            <option value="Outer">Outer Peripheries</option>
+          </select>
+        </div>
+        <div class="fg zvw" id="zoneWrap">
+          <label class="fl">Zone <span class="r">*</span></label>
+          <select id="zone_select"><option value="">Select zone</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="slbl">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Observation
+      </div>
+      <div class="fg">
+        <label class="fl">What did you observe? <span class="r">*</span></label>
+        <textarea id="obs_text" placeholder="Describe the unsafe act, condition, or near-miss in detail…"></textarea>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="slbl">
+        <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Category &amp; sub-category
+      </div>
+      <div class="cg">
+        <button class="cb" onclick="selectCat('Food Safety',this)" type="button">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>Food Safety</span>
+        </button>
+        <button class="cb" onclick="selectCat('Product Quality',this)" type="button">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Product Quality</span>
+        </button>
+        <button class="cb" onclick="selectCat('GMP',this)" type="button">
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span>GMP</span>
+        </button>
+      </div>
+      <div id="scw" class="sw">
+        <div class="sclbl">Select sub-category — choose all that apply <span class="r">*</span></div>
+        <div class="scp" id="scp"></div>
+      </div>
+    </div>
+    <button class="sbtn" id="submitBtn" onclick="handleSubmit()" type="button">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <span id="btnLabel">Submit observation</span>
+      <div class="spinner" id="spinner"></div>
+    </button>
+    <div class="msg err" id="errMsg"></div>
+    <div class="msg ok" id="okMsg"></div>
+  </div>
+  <div class="sc sst" id="successState">
+    <div class="sico">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="stit">Observation logged — thank you!</div>
+    <div class="ssub">Your Safe Eyes report has been sent to the QA team and recorded in Microsoft Excel. It will be reviewed within 24 hours.</div>
+    <div class="rbdg" id="refNum"></div>
+    <br/>
+    <button class="nob" onclick="resetForm()" type="button">Submit another observation</button>
+  </div>
+  <div class="footer">Safe Eyes · Quality Culture Excellence &copy; <span id="yr"></span></div>
+</div>
+<script>
+const ZONES={Dough:["Zone 01 — Dough","Zone 02 — Dough Walk-in 1","Zone 03 — Dough Walk-in 2","Zone 04 — Silo","Zone 05 — Tray Washing"],CLC:["Zone 06 — CLC Mixing & Oven","Zone 07 — Packing","Zone 08 — CLC Blast Freezer"],Bakery:["Zone 09 — Cake","Zone 10 — Bun","Zone 11 — B2B"],Dunkin_RTE:["Zone 12 — Dunkin RTE"],BMC:["Zone 13 — BMC"],Dunkin_3Sink:["Zone 14 — Dunkin 3 Sink Area"],Sec_Packing:["Zone 15 — Secondary Packing Area","Zone 16 — Packing Storage Area","Zone 17 — BMC Blast Freezer"],Old_CK:["Zone 18 — Old CK","Zone 19 — New CK","Zone 20 — Popeyes","Zone 21 — Dock"],QA_Lab:["Zone 22 — IPQA Lab","Zone 23 — Dough Lab"],Admin_Block:["Zone 24 — Chem Lab","Zone 25 — Micro Lab","Zone 26 — Admin Block","Zone 27 — IT Room","Zone 28 — Cafeteria","Zone 29 — HPLC Room","Zone 30 — Chemistry Lab","Zone 31 — Micro Lab (2)","Zone 32 — Hygiene Junction","Zone 33 — Gallery Area"],Utilities:["Zone 34 — WTP","Zone 35 — ETP","Zone 36 — HTP","Zone 37 — Transformer Yard","Zone 38 — Air Compressor","Zone 39 — VCB","Zone 40 — Refrigeration","Zone 41 — Ref Freon","Zone 42 — LT Room","Zone 43 — Maintenance Stores"],Warehouse:["Zone 44 — Outbound Dock 5-10","Zone 45 — Inbound Dock 11-14","Zone 46 — Dry Dock 15-18","Zone 47 — Tray Wash Dock 1-4","Zone 48 — Dry Warehouse","Zone 49 — Dry Segregation Area","Zone 50 — Chiller","Zone 51 — Chiller Segregation Area","Zone 52 — Freezer","Zone 53 — Freezer Segregation Area","Zone 54 — Dry Warehouse (Alt)","Zone 55 — Chemical Storage Room"],Outer:["Zone 56 — Truck Washing","Zone 57 — Scrap Yard","Zone 58 — Main Entrance"]};
+const SUBCATS=["Cleaning & Sanitation","Equipment / Cleaning","Foreign Body Risk","Personal Hygiene","IHR Ingredient","Pest Control","Practices","Process","Product Handling Issue","Storage Temperature","Infrastructural","Others","Training Gaps"];
+let selCat=null,selSubcats=new Set(),paUrl='';
+document.getElementById('yr').textContent=new Date().getFullYear();
+const stored=localStorage.getItem('se_pa_url');
+if(stored){paUrl=stored;document.getElementById('paUrl').value=stored;showUrlSaved();}
+tick();setInterval(tick,1000);
+function tick(){const n=new Date();const d=n.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});const t=n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});const el=document.getElementById('liveClock');if(el)el.textContent=d+' · '+t;}
+function saveUrl(){const v=document.getElementById('paUrl').value.trim();if(!v||!v.startsWith('https://')){document.getElementById('cfgStatus').textContent='⚠ Enter a valid https:// URL.';document.getElementById('cfgStatus').className='cfg-status err';return;}paUrl=v;localStorage.setItem('se_pa_url',v);showUrlSaved();}
+function showUrlSaved(){document.getElementById('cfgStatus').textContent='✓ URL saved. Submissions will go to Microsoft Excel.';document.getElementById('cfgStatus').className='cfg-status ok';document.getElementById('setupBanner').style.display='none';}
+function updateZones(){const a=document.getElementById('area_select').value;const zw=document.getElementById('zoneWrap');const zs=document.getElementById('zone_select');zs.innerHTML='<option value="">Select zone</option>';if(a&&ZONES[a]){ZONES[a].forEach(z=>{const o=document.createElement('option');o.value=z;o.textContent=z;zs.appendChild(o);});zw.classList.add('vis');}else{zw.classList.remove('vis');}}
+function selectCat(name,btn){document.querySelectorAll('.cb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selCat=name;selSubcats.clear();const scw=document.getElementById('scw'),scp=document.getElementById('scp');scp.innerHTML='';SUBCATS.forEach(sc=>{const p=document.createElement('button');p.className='sp';p.textContent=sc;p.type='button';p.onclick=function(){this.classList.toggle('active');if(this.classList.contains('active'))selSubcats.add(sc);else selSubcats.delete(sc);};scp.appendChild(p);});scw.classList.add('vis');}
+function genRef(){return 'SE-'+new Date().getFullYear()+'-'+String(Math.floor(Math.random()*99999)).padStart(5,'0');}
+function fmtDate(d){return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}
+function fmtTime(d){return d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});}
+async function handleSubmit(){
+  const name=document.getElementById('obs_name').value.trim();
+  const phone=document.getElementById('obs_phone').value.trim();
+  const dept=document.getElementById('obs_dept').value;
+  const process=document.getElementById('obs_process').value.trim();
+  const area=document.getElementById('area_select').value.replace(/_/g,' ');
+  const zone=document.getElementById('zone_select').value;
+  const obs=document.getElementById('obs_text').value.trim();
+  const errEl=document.getElementById('errMsg');
+  errEl.style.display='none';
+  if(!name||!phone||!dept||!area||!obs||!selCat||selSubcats.size===0){errEl.textContent='Please fill in all required fields (*) and select a category and at least one sub-category.';errEl.style.display='block';return;}
+  const now=new Date();const ref=genRef();
+  const payload={Reference:ref,Date:fmtDate(now),Time:fmtTime(now),Name:name,Phone:phone,Department:dept,ProcessArea:process||'—',Area:area,Zone:zone||'—',Category:selCat,SubCategories:[...selSubcats].join(', '),Observation:obs};
+  const btn=document.getElementById('submitBtn');const lbl=document.getElementById('btnLabel');const spinner=document.getElementById('spinner');
+  if(!paUrl){document.getElementById('okMsg').textContent='⚠ No Power Automate URL set yet. Please configure the URL above.';document.getElementById('okMsg').style.display='block';return;}
+  btn.disabled=true;lbl.textContent='Sending…';spinner.style.display='block';
+  try{const res=await fetch(paUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});if(!res.ok)throw new Error('HTTP '+res.status);document.getElementById('refNum').textContent='Reference: '+ref;document.getElementById('mainForm').style.display='none';document.getElementById('successState').classList.add('vis');}
+  catch(e){errEl.textContent='Could not reach the server ('+e.message+'). Check your Power Automate URL and try again.';errEl.style.display='block';}
+  finally{btn.disabled=false;lbl.textContent='Submit observation';spinner.style.display='none';}
+}
+function resetForm(){document.getElementById('mainForm').style.display='block';document.getElementById('successState').classList.remove('vis');['obs_name','obs_phone','obs_process','obs_text'].forEach(id=>document.getElementById(id).value='');['obs_dept','area_select'].forEach(id=>document.getElementById(id).value='');document.getElementById('zone_select').innerHTML='<option value="">Select zone</option>';document.getElementById('zoneWrap').classList.remove('vis');document.querySelectorAll('.cb').forEach(b=>b.classList.remove('active'));document.getElementById('scw').classList.remove('vis');document.getElementById('scp').innerHTML='';document.getElementById('errMsg').style.display='none';document.getElementById('okMsg').style.display='none';selCat=null;selSubcats.clear();}
+</script>
+</body>
+</html>
